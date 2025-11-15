@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title><%= title || 'Casino Chips Tracker' %></title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Casino Chips Tracker</h1>
+      <nav>
+        <% if (user) { %>
+          <span class="muted">Signed in as <%= user.email %></span>
+          <a href="/logout">Logout</a>
+        <% } else { %>
+          <a href="/login">Login</a> | <a href="/signup">Sign up</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <% if (messages.error) { %>
+      <div class="flash error"><%= messages.error.join(' - ') %></div>
+    <% } %>
+    <% if (messages.success) { %>
+      <div class="flash success"><%= messages.success.join(' - ') %></div>
+    <% } %>
+
+    <%- body %>
+  </main>
+
+  <footer class="container">
+    <small>Built quickly for a demo. Keep betting responsibly — virtual chips only.</small>
+  </footer>
+</body>
+</html>
