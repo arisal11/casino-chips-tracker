@@ -78,7 +78,7 @@ app.post('/signup', async (req, res) => {
     }
     const user = new User({ name, password, wallet: 250 });
     await user.save();
-    req.session.user = { id: user._id, email: user.name };
+    req.session.user = { id: user._id, name: user.name };
     req.flash('success', 'Account created. $250 credited to your wallet!');
     res.redirect('/dashboard');
   } catch (err) {
